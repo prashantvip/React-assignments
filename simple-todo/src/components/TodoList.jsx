@@ -1,12 +1,12 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 
-const TodoList = ({ data }) => {
+const TodoList = ({ data, handleStatus }) => {
     // console.log(data);
     return (
         <div>
             {data.map((element) => {
-                return <TodoItem element={element} />
+                return <TodoItem element={element} handleStatus={handleStatus} />
             })}
         </div>
     )
