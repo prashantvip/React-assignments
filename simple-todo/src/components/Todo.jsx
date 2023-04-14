@@ -1,28 +1,28 @@
 import React, { useState } from 'react'
 import TodoList from './TodoList'
-import { nanoid } from "nanoid"
+import { nanoid } from 'nanoid'
 
 const Todo = () => {
-    const [data, setData] = useState([])
-    const [text, setText] = useState("")
+    const [todo, setTodo] = useState('')
+    const [list, setList] = useState([])
 
-    const handleClick = () => {
+    const addTodo = () => {
         const payload = {
-            title: text,
-            status: false,
-            id: nanoid(5)
+            id: nanoid(5),
+            title: todo,
+            status: false
         }
-        setData([...data, payload])
+        setList([...list, payload])
     }
 
     const handleStatus = (id) => {
-        setData([...data.map((e) => (e.id === id ? { ...e, status: !e.status } : e))])
+        setList([...list.map((e) => (e.id === id ? { ...e, status: !e.status } : e))])
     }
     return (
         <div>
-            <input type="text" placeholder='enter todo' onChange={(e) => setText(e.target.value)} />
-            <button type="button" onClick={handleClick}>Add</button>
-            <TodoList data={data} handleStatus={handleStatus} />
+            <input type="text" placeholder='enter todo' onChange={(e) => setTodo(e.target.value)} />
+            <button onClick={addTodo}>Add todo</button>
+            <TodoList list={list} handleStatus={handleStatus} />
         </div>
     )
 }

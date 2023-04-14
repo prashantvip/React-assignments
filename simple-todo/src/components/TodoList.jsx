@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TodoItem from './TodoItem'
 
-const TodoList = ({ data, handleStatus }) => {
-    // console.log(data);
+const TodoList = ({ list, handleStatus }) => {
     return (
         <div>
-            {data.map((element) => {
-                return <TodoItem element={element} handleStatus={handleStatus} />
+            {list.map((element, index) => {
+                return <TodoItem element={element} key={index} handleStatus={handleStatus} />
             })}
         </div>
     )
