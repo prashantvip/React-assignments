@@ -3,16 +3,17 @@ import { useEffect, useState } from "react"
 
 const Table = () => {
     const [formData, setFormData] = useState([]);
+    const [page, setPage] = useState(1)
 
     const fetchData = async () => {
-        const response = await fetch("http://localhost:3000/forms")
+        const response = await fetch(`http://localhost:3000/forms?_page=${page}&_limit=3`)
         const result = await response.json()
         setFormData(result);
     }
 
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [page])
     return (
         <div>
             <table>
@@ -39,6 +40,8 @@ const Table = () => {
                     })}
                 </tbody>
             </table>
+            <button onClick={() => setPage(page - 1)}>prev</button>
+            <button onClick={() => setPage(page + 1)}>next</button>
         </div>
     )
 }
