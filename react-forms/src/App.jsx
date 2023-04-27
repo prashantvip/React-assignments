@@ -13,3 +13,7 @@ function App() {
 }
 
 export default App
+
+
+// npm i json-server
+// json-server db.json --port 3000 --watch
