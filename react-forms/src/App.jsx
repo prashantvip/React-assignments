@@ -10,6 +10,7 @@ function App() {
       <Table />
     </>
   )
+
 }
 
 export default App
